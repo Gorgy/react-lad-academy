@@ -1,6 +1,6 @@
 import { FC } from 'react';
-import Repin from '../../img/repin.jpg';
-import { Button } from '../shared/ui';
+import Repin from 'shared/img/repin.jpg';
+import { Button } from 'shared/ui';
 
 const App: FC = () => (
   <>

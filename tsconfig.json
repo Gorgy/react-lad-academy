@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
-    "baseUrl": "./src",
-    "sourceRoot": ".",
+    "baseUrl": "./",
+    "sourceRoot": "./src/",
     "sourceMap": true,
     "outDir": "./build/",
     "noImplicitAny": true,
@@ -12,7 +12,15 @@
     "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
-    "typeRoots": ["./types/*.d.ts"]
+    "typeRoots": ["./types/*.d.ts"],
+    "paths": {
+      "app": ["src/app"],
+      "app/*": ["src/app/*"],
+      "pages": ["src/pages"],
+      "pages/*": ["src/pages/*"],
+      "shared": ["src/shared"],
+      "shared/*": ["src/shared/*"],
+    }
   },
   "include": ["src", "types"],
   "ts-node": {

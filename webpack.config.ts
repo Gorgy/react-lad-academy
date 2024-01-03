@@ -8,6 +8,7 @@ import { WebpackDevServerOptions } from 'webpack-cli/lib/types';
 import 'webpack-dev-server';
 
 const appCache = path.resolve('.app-cache');
+const sourcePath = path.resolve(__dirname, 'src');
 
 const webpackConfig = (
   _: unknown,
@@ -15,7 +16,7 @@ const webpackConfig = (
 ): Configuration => {
   const plugins: Configuration['plugins'] = [
     new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, 'src', 'index.html'),
+      template: path.resolve(sourcePath, 'index.html'),
     }),
     new MiniCssExtractPlugin({
       filename: '[name].[contenthash].css',
@@ -89,10 +90,15 @@ const webpackConfig = (
         ? 'browserslist'
         : 'web',
     resolve: {
+      alias: {
+        app: path.resolve(sourcePath, 'app'),
+        pages: path.resolve(sourcePath, 'pages'),
+        shared: path.resolve(sourcePath, 'shared'),
+      },
       extensions: ['.js', '.jsx', '.ts', '.tsx'],
     },
     // Входная точка проекта
-    entry: path.resolve(__dirname, 'src', 'js', 'index.tsx'),
+    entry: path.resolve(sourcePath, 'index.tsx'),
     // Точка сборки проекта
     output: {
       // Путь до точки
