@@ -16,6 +16,8 @@
     "@babel/preset-env": "^7.23.6",
     "@babel/preset-react": "^7.23.3",
     "@babel/preset-typescript": "^7.23.3",
+    "@commitlint/cli": "^18.4.4",
+    "@commitlint/config-conventional": "^18.4.4",
     "@pmmmwh/react-refresh-webpack-plugin": "github:pmmmwh/react-refresh-webpack-plugin",
     "@types/node": "^20.10.5",
     "@types/react": "^18.2.45",
@@ -45,6 +47,7 @@
     "eslint-plugin-unicorn": "^50.0.1",
     "html-loader": "^4.2.0",
     "html-webpack-plugin": "^5.6.0",
+    "lefthook": "^1.5.5",
     "mini-css-extract-plugin": "^2.7.6",
     "postcss": "^8.4.32",
     "postcss-loader": "^7.3.4",
@@ -61,7 +64,12 @@
     "webpack-dev-server": "^4.15.1"
   },
   "dependencies": {
+    "-": "^0.0.1",
+    "D": "^1.0.0",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "stylelint": "^16.1.0",
+    "stylelint-config-recommended": "^14.0.0",
+    "stylelint-config-standard": "^36.0.0"
   }
 }
