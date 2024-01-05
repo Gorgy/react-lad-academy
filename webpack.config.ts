@@ -27,51 +27,6 @@ const webpackConfig = (
       : []),
   ];
 
-  const rules: Configuration['module']['rules'] = [
-    {
-      // Загрузчик для HTML
-      test: /\.(html)$/,
-      use: ['html-loader'],
-    },
-    {
-      // Загрузчик для стилей
-      test: /\.(s[ac]|c)ss$/i,
-      use: [
-        MiniCssExtractPlugin.loader,
-        'css-loader',
-        'postcss-loader',
-        'sass-loader',
-      ],
-    },
-    {
-      // Загрузчик для изображений
-      test: /\.(png|jpe?g|gif|svg|webp|ico)$/i,
-      // В продакшен режиме
-      // изображения размером до 8кб будут инлайнится в код
-      // В режиме разработки все изображения будут помещаться в dist/assets
-      type: process.env.NODE_ENV === 'production' ? 'asset' : 'asset/resource',
-    },
-    {
-      // Загрузчик для шрифтов
-      test: /\.(woff2?|eot|ttf|otf)$/i,
-      type: 'asset/resource',
-    },
-    {
-      // Загрузчик для JS/JSX/TS/TSX
-      test: /\.(js|jsx|ts|tsx)$/,
-      // Исключаем директорию node_modules
-      exclude: /node_modules/,
-      use: {
-        loader: 'babel-loader',
-        options: {
-          // Использование кэша для избежания рекомпиляции
-          // при каждом запуске
-          cacheDirectory: path.join(appCache, 'babel'),
-        },
-      },
-    },
-  ];
-
   // Настройка сервера для разработки
   const devServer: Pick<Configuration, 'devtool' | 'devServer'> = {
     devtool: 'source-map',
@@ -112,7 +67,51 @@ const webpackConfig = (
     },
     plugins,
     module: {
-      rules,
+      rules: [
+        {
+          // Загрузчик для HTML
+          test: /\.(html)$/,
+          use: ['html-loader'],
+        },
+        {
+          // Загрузчик для стилей
+          test: /\.(s[ac]|c)ss$/i,
+          use: [
+            MiniCssExtractPlugin.loader,
+            'css-loader',
+            'postcss-loader',
+            'sass-loader',
+          ],
+        },
+        {
+          // Загрузчик для изображений
+          test: /\.(png|jpe?g|gif|svg|webp|ico)$/i,
+          // В продакшен режиме
+          // изображения размером до 8кб будут инлайнится в код
+          // В режиме разработки все изображения будут помещаться в dist/assets
+          type:
+            process.env.NODE_ENV === 'production' ? 'asset' : 'asset/resource',
+        },
+        {
+          // Загрузчик для шрифтов
+          test: /\.(woff2?|eot|ttf|otf)$/i,
+          type: 'asset/resource',
+        },
+        {
+          // Загрузчик для JS/JSX/TS/TSX
+          test: /\.(js|jsx|ts|tsx)$/,
+          // Исключаем директорию node_modules
+          exclude: /node_modules/,
+          use: {
+            loader: 'babel-loader',
+            options: {
+              // Использование кэша для избежания рекомпиляции
+              // при каждом запуске
+              cacheDirectory: path.join(appCache, 'babel'),
+            },
+          },
+        },
+      ],
     },
     ...devServer,
   };

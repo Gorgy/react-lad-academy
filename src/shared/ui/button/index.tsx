@@ -1,5 +1,7 @@
-import React, { FC, PropsWithChildren } from 'react';
+import { FC, PropsWithChildren } from 'react';
 
-export const Button: FC<PropsWithChildren> = ({ children }) => (
-  <button>{children}</button>
+const Button: FC<PropsWithChildren> = ({ children }) => (
+  <button type="button">{children}</button>
 );
+
+export default Button;
